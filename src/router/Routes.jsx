@@ -1,0 +1,59 @@
+import { createBrowserRouter } from "react-router";
+import Home from "../pages/Home";
+import Signup from "../pages/auth/Signup";
+import RootLayout from "../layout/RootLayout";
+import Loading from "../components/Loading";
+import ForgetPassword from "../pages/auth/ForgetPassword";
+import Profile from "../pages/auth/Profile";
+import PrivateRoute from "./PrivateRoute";
+import SignIn from "../pages/auth/SignIn";
+import NotFound from "../components/NotFound";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    Component: RootLayout,
+    HydrateFallback: Loading,
+    children: [
+      {
+        index: true,
+        Component: Home,
+      },
+      {
+        path: "auth",
+        children: [
+          {
+            path: "signin",
+            Component: SignIn,
+          },
+          {
+            path: "signup",
+            Component: Signup,
+          },
+          {
+            path: "forget-password",
+            element: (
+              <PrivateRoute>
+                <ForgetPassword />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "profile",
+            element: (
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            ),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: "/*",
+    Component: NotFound,
+  },
+]);
+
+export default router;
