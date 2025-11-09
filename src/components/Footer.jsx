@@ -1,16 +1,31 @@
-import { FaSquareXTwitter, FaYoutube } from "react-icons/fa6";
-import { FaFacebookSquare } from "react-icons/fa";
+import { Link } from "react-router";
+import { FaFacebookF, FaXTwitter, FaYoutube } from "react-icons/fa6";
+
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
-    <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content items-center p-4">
-      <aside className="grid-flow-col items-center">
-        <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
+    <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10 border-t border-gray-300">
+      <aside className="-space-y-1">
+        <Logo />
+        <p>HomeNest Properties LTD.</p>
+        <p>
+          Gazipur, Dhaka <br />
+          Bangladesh
+        </p>
       </aside>
-      <nav className="flex gap-3 items-center justify-self-end">
-        <FaYoutube size={30} />
-        <FaSquareXTwitter size={24} />
-        <FaFacebookSquare size={24} />
+      <nav>
+        <h6 className="footer-title">Legal</h6>
+        <Link className="link link-hover">Contacts</Link>
+        <Link className="link link-hover">Terms and Conditions</Link>
+      </nav>
+      <nav>
+        <h6 className="footer-title">Social</h6>
+        <div className="grid grid-flow-col gap-4">
+          <FaYoutube size={25} />
+          <FaFacebookF size={22} />
+          <FaXTwitter size={22} />
+        </div>
       </nav>
     </footer>
   );
