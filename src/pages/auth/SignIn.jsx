@@ -1,16 +1,17 @@
 import { MdErrorOutline, MdOutlineMail } from "react-icons/md";
 import { FaEye, FaEyeSlash, FaKey, FaRegUser } from "react-icons/fa6";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 
 import useAuthContext from "../../hooks/useAuthContext";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
-  const { setUser, signInUser, signInWithGoogle, customError, setCustomError } =
+  const { signInUser, signInWithGoogle, customError, setCustomError } =
     useAuthContext();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -23,13 +24,12 @@ export default function SignIn() {
     const password = e.target.password.value;
 
     signInUser(email, password)
-      .then((userCredential) => {
-        const currentUser = userCredential.user;
+      .then((result) => {
+        const currentUser = result.user;
         console.log(currentUser);
-        setUser(currentUser);
 
         // navigate to home after successful login
-        navigate("/");
+        navigate(location.state || "/");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -44,11 +44,12 @@ export default function SignIn() {
 
   const handleSignInWithGoogle = () => {
     signInWithGoogle()
-      .then((currentUser) => {
+      .then((result) => {
+        const currentUser = result.user;
         console.log(currentUser);
 
         // navigate to home after successful login
-        navigate("/");
+        navigate(location.state || "/");
       })
       .catch((error) => {
         console.log(error.message);

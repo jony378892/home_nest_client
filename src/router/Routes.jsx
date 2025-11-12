@@ -8,6 +8,10 @@ import Profile from "../pages/auth/Profile";
 import PrivateRoute from "./PrivateRoute";
 import SignIn from "../pages/auth/SignIn";
 import NotFound from "../components/NotFound";
+import AllProperties from "../components/AllProperties";
+import AddProperties from "../components/AddProperties";
+import MyProperties from "../components/MyProperties";
+import MyRatings from "../components/MyRatings";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +51,34 @@ const router = createBrowserRouter([
             ),
           },
         ],
+      },
+      {
+        path: "all-properties",
+        Component: AllProperties,
+      },
+      {
+        path: "add-properties",
+        element: (
+          <PrivateRoute>
+            <AddProperties />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-properties",
+        element: (
+          <PrivateRoute>
+            <MyProperties />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-ratings",
+        element: (
+          <PrivateRoute>
+            <MyRatings />
+          </PrivateRoute>
+        ),
       },
     ],
   },

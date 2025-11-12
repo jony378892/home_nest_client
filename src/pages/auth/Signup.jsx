@@ -1,14 +1,22 @@
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { MdErrorOutline, MdOutlineMail } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
-import { FaEye, FaEyeSlash, FaKey, FaRegUser } from "react-icons/fa6";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { FaEye, FaEyeSlash, FaKey, FaLink, FaRegUser } from "react-icons/fa6";
+
 import useAuthContext from "../../hooks/useAuthContext";
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
-  const { signUpUser, signInWithGoogle, setCustomError, customError } =
-    useAuthContext();
+  const {
+    user,
+    setUser,
+    signUpUser,
+    signInWithGoogle,
+    setCustomError,
+    customError,
+    updateUser,
+  } = useAuthContext();
   const navigate = useNavigate();
 
   const handleShowPassword = () => {
@@ -19,32 +27,37 @@ export default function Signup() {
     e.preventDefault();
 
     const name = e.target.name.value;
+    const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
     console.log({ name, email, password });
 
     signUpUser(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
+      .then(async (result) => {
+        const user = result.user;
+        console.log("Signup Successful");
         console.log(user);
 
-        // navigate to home after successful login
-        navigate("/");
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+            navigate("/");
+          })
+          .catch((error) => {
+            setUser(user);
+            console.log(error.message);
+          });
       })
       .catch((error) => {
-        const errorMessage = error.message;
-
-        if (errorMessage == "Firebase: Error (auth/email-already-in-use).") {
-          setCustomError("Email already registered");
-          console.log(errorMessage);
-        }
+        console.log(error.message);
       });
   };
 
   const handleGoogleSignup = () => {
     signInWithGoogle()
-      .then((currentUser) => {
+      .then((result) => {
+        const currentUser = result.user;
         console.log(currentUser);
 
         // navigate to home after successful login
@@ -54,6 +67,12 @@ export default function Signup() {
         console.log(error.message);
       });
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
 
   return (
     <div className="py-14 flex flex-col gap-10 items-center">
@@ -77,6 +96,21 @@ export default function Signup() {
             <div className="validator-hint hidden">
               Enter valid email address
             </div>
+          </div>
+
+          {/* photo */}
+          <div>
+            <label className=" font-medium">Photo URL</label>
+            <div className="input validator outline-none mt-1 w-full">
+              <FaLink className="text-gray-500" size={18} />
+              <input
+                type="text"
+                placeholder="Photo URL"
+                name="photo"
+                required
+              />
+            </div>
+            <div className="validator-hint hidden">Enter valid link</div>
           </div>
           {/* email */}
           <div>
@@ -105,6 +139,9 @@ export default function Signup() {
                 name="password"
                 placeholder="password"
                 required
+                minlength="6"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                title="Must be more than 6 characters, including number, lowercase letter, uppercase letter"
               />
               <div
                 type="button"
@@ -115,7 +152,11 @@ export default function Signup() {
               </div>
             </div>
             <div className="validator-hint hidden">
-              Enter valid email address
+              Must be more than 8 characters, including
+              <br />
+              At least one number <br />
+              At least one lowercase letter <br />
+              At least one uppercase letter
             </div>
           </div>
           <button className="btn btn-neutral mt-5">Sign up</button>

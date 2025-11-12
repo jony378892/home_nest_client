@@ -1,6 +1,6 @@
-import Loading from "../components/Loading";
 import useAuthContext from "../hooks/useAuthContext";
 import { Navigate, useLocation } from "react-router";
+import Loading from "../components/Loading";
 
 export default function PrivateRoute({ children }) {
   const location = useLocation();

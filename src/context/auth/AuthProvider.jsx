@@ -12,14 +12,15 @@ import {
   updateProfile,
 } from "firebase/auth";
 
-const googleProvider = new GoogleAuthProvider();
-
 export default function AuthProvider({ children }) {
-  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [customError, setCustomError] = useState();
 
   const signInWithGoogle = () => {
+    const googleProvider = new GoogleAuthProvider();
+    setLoading(true);
+
     return signInWithPopup(auth, googleProvider);
   };
 
@@ -41,16 +42,12 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-        setLoading(true);
-      } else {
-        setLoading(true);
-      }
+      setUser(currentUser);
+      setLoading(false);
     });
 
     return () => unsubscribe();
-  }, [user]);
+  }, []);
 
   const value = {
     user,
