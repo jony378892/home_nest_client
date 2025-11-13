@@ -1,6 +1,6 @@
 # HomeNest
 
-[Live Site](https://your-live-site-url.com)
+## [https://homenest-property.vercel.app](https://homenest-property.vercel.app)
 
 HomeNest is a modern real estate platform that helps users **buy, sell, rent, and manage properties** seamlessly. Whether you are a property seeker, seller, or agent, HomeNest makes property transactions smooth, fast, and secure.
 

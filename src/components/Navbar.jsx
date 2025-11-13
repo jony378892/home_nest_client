@@ -4,7 +4,6 @@ import { FaUser } from "react-icons/fa6";
 
 import useAuthContext from "../hooks/useAuthContext";
 import Logo from "./Logo";
-import ThemeToggle from "./ThemeToggle";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {

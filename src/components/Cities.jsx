@@ -12,7 +12,7 @@ export default function Cities() {
 
   useEffect(() => {
     instance.get("/cities").then((data) => {
-      // console.log(data.data);
+      console.log(data.data);
       setCities(data.data);
     });
   }, [instance]);
