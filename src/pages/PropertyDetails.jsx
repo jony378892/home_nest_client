@@ -83,28 +83,28 @@ export default function PropertyDetails() {
         </div>
 
         <div className="mt-8 space-y-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+          <h1 className="text-3xl md:text-4xl font-bold text-base-800">
             {property.propertyName}
           </h1>
-          <p className="text-gray-600 text-lg leading-relaxed">
+          <p className="text-base-600 text-lg leading-relaxed">
             {property.shortDescription}
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base-700 mt-6">
             <p>
-              <span className="font-semibold text-gray-800">Category:</span>{" "}
+              <span className="font-semibold text-base-800">Category:</span>{" "}
               {property.category}
             </p>
             <p>
-              <span className="font-semibold text-gray-800">Location:</span>{" "}
+              <span className="font-semibold text-base-800">Location:</span>{" "}
               {property.location}
             </p>
             <p>
-              <span className="font-semibold text-gray-800">Price:</span> $
+              <span className="font-semibold text-base-800">Price:</span> $
               {property.propertyPrice.toLocaleString()}
             </p>
             <p>
-              <span className="font-semibold text-gray-800">Posted on:</span>{" "}
+              <span className="font-semibold text-base-800">Posted on:</span>{" "}
               {new Date(property.createdAt).toLocaleDateString()}
             </p>
           </div>
@@ -117,13 +117,13 @@ export default function PropertyDetails() {
             className="w-14 h-14 rounded-full object-cover border"
           />
           <div>
-            <h3 className="font-semibold text-gray-800">{property.userName}</h3>
-            <p className="text-gray-600 text-sm">{property.userEmail}</p>
+            <h3 className="font-semibold text-base-800">{property.userName}</h3>
+            <p className="text-base-600 text-sm">{property.userEmail}</p>
           </div>
         </div>
 
         <div className="mt-12 border-t pt-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+          <h2 className="text-2xl font-semibold text-base-800 mb-6">
             Ratings & Reviews
           </h2>
           <form
@@ -131,7 +131,7 @@ export default function PropertyDetails() {
             className="max-w-2xl flex flex-col gap-6"
           >
             <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-              <label className="font-semibold text-gray-700 dark:text-gray-200 min-w-[80px]">
+              <label className="font-semibold text-base-700 min-w-[80px]">
                 Ratings:
               </label>
               <Rating
@@ -144,7 +144,7 @@ export default function PropertyDetails() {
             <div className="flex flex-col sm:flex-row sm:items-start sm:gap-4">
               <label
                 htmlFor="feedback"
-                className="font-semibold text-gray-700 dark:text-gray-200 min-w-[80px] mt-2 sm:mt-0"
+                className="font-semibold text-base-700 min-w-[80px] mt-2 sm:mt-0"
               >
                 Feedback:
               </label>
@@ -152,7 +152,7 @@ export default function PropertyDetails() {
                 name="feedback"
                 id="feedback"
                 placeholder="Write your feedback here..."
-                className="w-full sm:w-2/3 h-28 sm:h-32 border border-gray-300 dark:border-gray-600 rounded-xl p-3 outline-none resize-none"
+                className="w-full sm:w-2/3 h-28 sm:h-32 border rounded-xl p-3 outline-none resize-none border-gray-400"
                 required
               />
             </div>
