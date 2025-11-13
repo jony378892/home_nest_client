@@ -1,16 +1,27 @@
-# React + Vite
+# HomeNest
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Live Site](https://your-live-site-url.com)
 
-Currently, two official plugins are available:
+HomeNest is a modern real estate platform that helps users **buy, sell, rent, and manage properties** seamlessly. Whether you are a property seeker, seller, or agent, HomeNest makes property transactions smooth, fast, and secure.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Browse Properties**: View a wide selection of apartments, villas, and houses with detailed descriptions, prices, and locations.
+- **Add & Manage Listings**: Easily list your properties, upload images, and update details in real-time.
+- **Secure User Accounts**: Sign up, log in, and manage your profile securely with email/password or social login.
+- **Property Dashboard**: Track your added properties, update details, and manage your listings efficiently.
+- **Responsive Design**: Fully responsive UI that works seamlessly on desktops, tablets, and mobile devices.
+- **Theme Support**: Switch between light and dark themes for a personalized user experience.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies Used
+
+- **Frontend**: React, Tailwind CSS, DaisyUI
+- **Backend**: Node.js, Express.js, MongoDB
+- **Authentication**: Firebase Authentication
+- **Other Libraries**: React Router, React Icons, Swiper.js, React Hot Toast
+
+---

@@ -33,7 +33,7 @@ const slides = [
 
 export default function HeroSection() {
   return (
-    <section className="py-16 bg-gray-50 w-full">
+    <section className="py-16 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <Swiper
           modules={[Autoplay, Pagination]}
