@@ -26,7 +26,7 @@ export default function SignIn() {
     signInUser(email, password)
       .then((result) => {
         const currentUser = result.user;
-        console.log(currentUser);
+        // console.log(currentUser);
 
         // navigate to home after successful login
         navigate(location.state || "/");
